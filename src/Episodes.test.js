@@ -59,6 +59,8 @@ const episodeData = {
     },
   };
 
+  
+
   //test1
 test('check if Episodes renders with fake data passed down as empty array', () => {
     //here we are passing a fake props as an empty array
@@ -69,15 +71,22 @@ test('check if Episodes renders with fake data passed down as empty array', () =
 
 
 //test2
-test('renders without errors if passed down fake array data', () => {
+test('renders Episodes with fake object and rerender with dummy data', () => {
     const {rerender, queryAllByTestId} = render (
         <Episodes episodes={[]} />
-    );    
+    );   
 
     //expect the episodes not to have the data
     expect(queryAllByTestId(/episodes/i)).toHaveLength(0);
 
-    //re-render the component as if the API call failed
-    rerender(<Episodes episodes={[]} />);   
+    //re-render the component as if the API call was successful and props were passed down
+    rerender(<Episodes episodes={[episodeData]} />);  
+    
+    console.log(`--->`, episodeData);
+    expect(queryAllByTestId(/episodes/i)).toHaveLength(1);
 
 })
+
+// test('render Episodes with some dummy data', () => {
+
+// })
