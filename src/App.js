@@ -16,10 +16,11 @@ export default function App() {
    fetchShow()    
         .then(res => {
           // console.log(`RESPOSNSE`, res);          
-          setShow(res.data);
-          setSeasons(formatSeasons(res.data._embedded.episodes));
+          setShow(res);
+          setSeasons(formatSeasons(res._embedded.episodes));
         })
         .catch(error => {console.log(error)});  
+        fetchShow();
     
   }, []);
 
@@ -41,6 +42,7 @@ export default function App() {
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
         placeholder="Select an option"
+        
       />
       <Episodes episodes={episodes} />
     </div>
