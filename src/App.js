@@ -20,7 +20,7 @@ export default function App() {
           setSeasons(formatSeasons(res._embedded.episodes));
         })
         .catch(error => {console.log(error)});  
-        fetchShow();
+        
     
   }, []);
 
